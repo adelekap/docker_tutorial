@@ -1,0 +1,8 @@
+name: docker_tutorial
+dependencies:
+  - python=3.6
+  - flask
+  - sqlalchemy
+  - sqlalchemy-utils
+  - requests
+  - pymssql
