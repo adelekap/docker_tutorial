@@ -2,8 +2,8 @@ from flask import Flask
 import os
 import socket
 
-from sql_server_example.search_results_sql import insert_data
-from sql_server_example.utils import get_first_google_result
+from search_results_sql import insert_data
+from utils import get_first_google_result
 
 app = Flask(__name__)
 

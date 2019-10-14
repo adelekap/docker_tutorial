@@ -9,7 +9,7 @@ ADD ../.. /app
 RUN conda env create -f environment.yml
 ENV PATH /opt/conda/envs/docker_tutorial/bin:$PATH
 
-# expose port 4000 to the outside world
+# expose port to the outside world
 EXPOSE 8080
 
 # run app.y

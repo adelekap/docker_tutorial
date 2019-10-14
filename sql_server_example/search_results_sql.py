@@ -1,9 +1,16 @@
+import pyodbc
 import sqlalchemy as sqla
 import sqlalchemy_utils as sqla_utils
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-CONNECTION_STRING = 'mssql+pyodbc://sa:reallyStrongPwd123@127.0.0.1:1433/DemoDB?driver=ODBC+Driver+13+for+SQL+Server'
+# IP = '127.0.0.1'   # If running locally
+IP = 'sql-container'
+PORT = 1433
+LOGIN = 'sa:reallyStrongPwd123'
+CONNECTION_STRING = f'mssql+pyodbc://{LOGIN}@{IP}:{PORT}/DemoDB?driver=ODBC+Driver+17+for+SQL+Server'
+
+
 ENGINE = sqla.create_engine(CONNECTION_STRING)
 BASE = declarative_base()
 

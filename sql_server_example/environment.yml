@@ -5,4 +5,4 @@ dependencies:
   - sqlalchemy
   - sqlalchemy-utils
   - requests
-  - pymssql
+  - pyodbc
