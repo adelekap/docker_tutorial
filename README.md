@@ -75,22 +75,22 @@
     
 ## Other helpful docker commands!
 
-####current docker status
+###current docker status
 `docker info`
 
-####remove a container
+###remove a container
 `docker container rm <name of container>`
 
-####remove all exited containers
+###remove all exited containers
 `docker ps -a -f status-exited`
 
-####run command in an active container
+###run command in an active container
 `docker exec -it <name of container> bash`
 
-####remove all unused images/containers/volumes
+###remove all unused images/containers/volumes
 `docker system prune`
 
-####remove volume
+###remove volume
 `docker volume rm <name of volume>`
 
 [and more](https://docs.docker.com/engine/reference/commandline/docker/)...
