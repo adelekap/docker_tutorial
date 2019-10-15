@@ -26,7 +26,7 @@
 3. Navigate to http://0.0.0.0:8080
 
 
-## Two Containers Example
+## Multi-Container Example
  
 1. Install mssql client
 
@@ -67,7 +67,7 @@
 
 2. Spin up the container with the volumes mapped
 
-    `docker run --name sql-container-with-volumes --volume mssqlsystem:/var/opt/mssql --volume mssqluser:/var/opt/sqlserver --env="ACCEPT_EULA=Y" --env="SA_PASSWORD=reallyStrongPwd123" --network=sql-net  -p 1434:1433 --detach microsoft/mssql-server-linux:latest`
+    `docker run --name sql-container --volume /~/Docker/tutorial:/var/opt/mssql --env="ACCEPT_EULA=Y" --env="SA_PASSWORD=reallyStrongPwd123" --network=sql-net  -p 1433:1433 --detach microsoft/mssql-server-linux:latest`
     
 3. Build the docker-tutorial image and start the container
 
@@ -83,16 +83,13 @@
 #### remove a container
 `docker container rm <name of container>`
 
-#### remove all exited containers
-`docker ps -a -f status-exited`
+#### kill all containers
+`docker kill $(docker ps -q)`
 
 #### run command in an active container
 `docker exec -it <name of container> bash`
 
 #### remove all unused images/containers/volumes
 `docker system prune`
-
-#### remove volume
-`docker volume rm <name of volume>`
 
 [and more](https://docs.docker.com/engine/reference/commandline/docker/)...
