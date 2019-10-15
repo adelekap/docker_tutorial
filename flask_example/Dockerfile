@@ -3,7 +3,7 @@ FROM continuumio/miniconda3
 
 # establish the working directory
 WORKDIR /app
-ADD ../.. /app
+ADD . /app
 
 # create environment and set the python interpreter
 RUN conda env create -f environment.yml

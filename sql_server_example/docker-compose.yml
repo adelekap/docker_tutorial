@@ -1,0 +1,27 @@
+version: '3'
+services:
+  search_app:
+    build: .
+    ports:
+      - '8080:4000'
+    networks:
+      - sql-net
+    container_name: flask-container
+  sql_server:
+    image: "microsoft/mssql-server-linux:latest"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=reallyStrongPwd123
+    ports:
+      - '1433:1433'
+    networks:
+      - sql-net
+    volumes:
+      - db-data:/var/opt/mssql
+    container_name: sql-container
+
+volumes:
+  db-data:
+
+networks:
+  sql-net:
