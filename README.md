@@ -28,9 +28,9 @@
 
 ## Multi-Container Example
  
-1. Install mssql client
+1. Install mssql client or mssql SQLCMD
 
-    `npm install -g sql-cli`
+    `npm install -g sql-cli` or `brew install mssql-tools`
 
 2. Make new docker network with the bridge driver
 
@@ -52,28 +52,32 @@
 
 7. Check the database for the added record!
 
+    with sql client:
+
     `mssql -u sa -p reallyStrongPwd123 --port 1433`
     
     `USE DemoDB; SELECT * FROM SearchResults;`
+    
+    or with sqlcmd:
+    
+    `sqlcmd -S localhose -U sa -P reallyStrongPwd123 -Q "USE DemoDB; SELECT * FROM SearchResults;"`
 
 
 ## Using Volumes
 
-1. Create two volumes
+1. Create a volume
 
     `docker volume create mssqlsystem`
-    
-    `docker volume create mssqluser`
 
 2. Spin up the container with the volumes mapped
 
-    `docker run --name sql-container --volume /~/Docker/tutorial:/var/opt/mssql --env="ACCEPT_EULA=Y" --env="SA_PASSWORD=reallyStrongPwd123" --network=sql-net  -p 1433:1433 --detach microsoft/mssql-server-linux:latest`
+    `docker run --name sql-container --volume mssqlsystem:/var/opt/mssql --env="ACCEPT_EULA=Y" --env="SA_PASSWORD=reallyStrongPwd123" --network=sql-net  -p 1433:1433 --d microsoft/mssql-server-linux:latest`
     
 3. Build the docker-tutorial image and start the container
 
     `docker build -t docker-tutorial-sql`
     
-    `docker run --name flask-container -p 8080:4000 --network sql-net docker-tutorial-sql`
+    `docker run --name flask-container -p 8080:4000 --network sql-net -d docker-tutorial-sql`
     
 ## Other helpful docker commands!
 
@@ -91,5 +95,8 @@
 
 #### remove all unused images/containers/volumes
 `docker system prune`
+
+#### view container logs
+`docker logs <name of container>`
 
 [and more](https://docs.docker.com/engine/reference/commandline/docker/)...
