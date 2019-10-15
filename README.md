@@ -22,6 +22,8 @@
 2. Check on our containers
 
     `docker ps -a`
+    
+3. Navigate to http://0.0.0.0:8080
 
 
 ## Two Containers Example
@@ -65,7 +67,7 @@
 
 2. Spin up the container with the volumes mapped
 
-    `docker run --name sql-container --volume mssqlsystem:/var/opt/mssql --volume mssqluser:/var/opt/sqlserver --env="ACCEPT_EULA=Y" --env="SA_PASSWORD=reallyStrongPwd123" --network=sql-net  -p 1433:1433 --detach microsoft/mssql-server-linux:latest`
+    `docker run --name sql-container-with-volumes --volume mssqlsystem:/var/opt/mssql --volume mssqluser:/var/opt/sqlserver --env="ACCEPT_EULA=Y" --env="SA_PASSWORD=reallyStrongPwd123" --network=sql-net  -p 1434:1433 --detach microsoft/mssql-server-linux:latest`
     
 3. Build the docker-tutorial image and start the container
 

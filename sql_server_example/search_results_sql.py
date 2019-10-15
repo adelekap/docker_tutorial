@@ -1,4 +1,3 @@
-import pyodbc
 import sqlalchemy as sqla
 import sqlalchemy_utils as sqla_utils
 from sqlalchemy.ext.declarative import declarative_base

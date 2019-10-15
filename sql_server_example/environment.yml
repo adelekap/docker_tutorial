@@ -6,3 +6,4 @@ dependencies:
   - sqlalchemy-utils
   - requests
   - pyodbc
+  - beautifulsoup4
