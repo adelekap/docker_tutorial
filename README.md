@@ -26,7 +26,7 @@
 3. Navigate to http://0.0.0.0:8080
 
 
-## Two Containers Example
+## Multi-Container Example
  
 1. Install mssql client
 
