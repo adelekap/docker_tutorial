@@ -15,7 +15,7 @@
 
 1. Build the docker image
 
-    `docker build -t docker-tutorial`
+    `docker build -t docker-tutorial .`
 
     `docker run --name tutorial-container -p 8080:4000 docker-tutorial`
 
@@ -60,7 +60,7 @@
     
     or with sqlcmd:
     
-    `sqlcmd -S localhose -U sa -P reallyStrongPwd123 -Q "USE DemoDB; SELECT * FROM SearchResults;"`
+    `sqlcmd -S localhost -U sa -P reallyStrongPwd123 -Q "USE DemoDB; SELECT * FROM SearchResults;"`
 
 
 ## Using Volumes
@@ -71,13 +71,22 @@
 
 2. Spin up the container with the volumes mapped
 
-    `docker run --name sql-container --volume mssqlsystem:/var/opt/mssql --env="ACCEPT_EULA=Y" --env="SA_PASSWORD=reallyStrongPwd123" --network=sql-net  -p 1433:1433 --d microsoft/mssql-server-linux:latest`
+    `docker run --name sql-container --volume mssqlsystem:/var/opt/mssql --env="ACCEPT_EULA=Y" --env="SA_PASSWORD=reallyStrongPwd123" --network=sql-net  -p 1433:1433 -d microsoft/mssql-server-linux:latest`
     
 3. Build the docker-tutorial image and start the container
 
     `docker build -t docker-tutorial-sql`
     
     `docker run --name flask-container -p 8080:4000 --network sql-net -d docker-tutorial-sql`
+    
+## Docker Compose
+
+1. Define services in a compose file [docker-compose.yml](./sql_server_example/docker-compose.yml)
+
+2. Build and run app with Compose
+
+    `docker-compose up`
+
     
 ## Other helpful docker commands!
 
