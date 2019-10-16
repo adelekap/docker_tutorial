@@ -73,11 +73,11 @@
 
     `docker run --name sql-container --volume mssqlsystem:/var/opt/mssql --env="ACCEPT_EULA=Y" --env="SA_PASSWORD=reallyStrongPwd123" --network=sql-net  -p 1433:1433 -d microsoft/mssql-server-linux:latest`
     
-3. Build the docker-tutorial image and start the container
-
-    `docker build -t docker-tutorial-sql`
+3. Run (or start) the flask server container
     
     `docker run --name flask-container -p 8080:4000 --network sql-net -d docker-tutorial-sql`
+    
+    `docker start flask-container`
     
 ## Docker Compose
 
@@ -109,3 +109,6 @@
 `docker logs <name of container>`
 
 [and more](https://docs.docker.com/engine/reference/commandline/docker/)...
+
+
+### [portainer](https://www.portainer.io/)
